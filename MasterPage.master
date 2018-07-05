@@ -1,0 +1,340 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Siêu thị vật liệu xây dựng</title>
+    <link href="Styles/Main_20110211.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Other.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="Js/jquery-3.3.1.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 1192px;
+            height: 180px;
+            margin: 0 auto;
+            border: solid thin #0299D2;
+            background: #000000 url('Images/Design/banner.png') no-repeat;
+            position: relative;
+            top: 2px;
+            left: -1px;
+        }
+
+        .auto-style2 {
+            border-left: thin solid #EEEEEE;
+            border-right: thin solid #EEEEEE;
+            width: 1193px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            left: 0px;
+            top: 0px;
+            border-top-style: none;
+            border-top-color: inherit;
+            border-top-width: medium;
+            border-bottom-style: none;
+            border-bottom-color: inherit;
+            border-bottom-width: medium;
+        }
+
+        .auto-style3 {
+            border-left: thin solid #0299D2;
+            border-right: thin solid #0299D2;
+            border-top: thin solid #0299D2;
+            width: 1193px;
+            height: 40px;
+            margin: 0 auto;
+            /*background-image: url('Images/Design/imgNavEstore.gif');*/
+            background-color: #009c42;
+            background-repeat: repeat;
+            background-position: left top;
+            position: relative;
+            left: 0px;
+            top: 2px;
+            border-bottom-style: none;
+            border-bottom-color: inherit;
+            border-bottom-width: medium;
+            text-align: center;
+        }
+
+        .auto-style4 {
+            width: 113%;
+        }
+
+        .auto-style5 {
+            float: left;
+            width: 21%;
+        }
+
+        .auto-style6 {
+            margin: 0 auto;
+            width: 1334px;
+            height: 63px;
+            background: url('Images/Design/bottom.gif') repeat-x;
+            text-align: center;
+            padding-top: 20px;
+            font-weight: normal;
+            font-style: normal;
+            font-variant: normal;
+            font-size: 12px;
+            line-height: normal;
+            font-family: Arial;
+        }
+
+        .auto-style7 {
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="giohang">
+            <ul>
+                <li>
+                    <asp:LinkButton ID="btnThoat" runat="server" OnClick="btnThoat_Click">Thoát</asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="btnDangKy" PostBackUrl="~/DangKy.aspx" runat="server">Đăng ký</asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="btnDangNhap" runat="server" Font-Bold="False" OnClick="btnDangNhap_Click">Đăng nhập</asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="btnTaiKhoan" runat="server" Font-Bold="True" OnClick="btnTaiKhoan_Click">Tài khoản</asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="btnGioHang" runat="server" PostBackUrl="~/GioHang.aspx">Giỏ hàng</asp:LinkButton></li>
+            </ul>
+        </div>
+        <div class="auto-style1">
+        </div>
+        <div class="auto-style3">
+            <ul class="ulNav">
+                <li><a href="Default.aspx"><span>Trang chủ</span></a></li>
+                <li><a href="Products1.aspx"><span>Sản phẩm</span></a> </li>
+                <li><a href="News.aspx"><span>Tin tức</span></a> </li>
+                <li><a href="TimKiem.aspx"><span>Tìm kiếm</span></a> </li>
+                <li><a href="LienHe.aspx"><span>Liên hệ</span></a> </li>
+            </ul>
+        </div>
+        <div class="auto-style2">
+            <div class="auto-style5">
+                <div class="navLeft">
+                    <div class="LC-box">
+                        <div class="LR-box-L">
+                        </div>
+                        <div class="LR-box-C">
+                            <span>Danh mục sản phẩm</span>
+                        </div>
+                        <div class="LR-box-R">
+                        </div>
+                    </div>
+                    <div class="event">
+                        <div id="mainNav" class="auto-style4">
+                            <ul id="nav">
+                                <%--<asp:Repeater ID="rptDanhMuc1" runat="server" OnItemDataBound="rptDanhMuc1_ItemDataBound">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbma" runat="server" Visible="false" Text='<%#Eval("CategoryID")%>'></asp:Label>
+                                    <li><a href="#"><span>
+                                        <%#Eval("CategoryName") %></span></a>
+                                        <ul>
+                                            <asp:Repeater ID="rptDanhMuc2" runat="server">
+                                                <ItemTemplate>
+                                                    <li><a href="Products.aspx?id=<%#Eval("SmallProductCategoryID")%>"><span>
+                                                        <%#Eval("SmallProductCategoryName")%></span></a></li>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </ul>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>--%>
+
+                                <asp:Repeater ID="rptDanhMuc1" runat="server" OnItemDataBound="rptDanhMuc1_ItemDataBound">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbma" runat="server" Visible="false" Text='<%#Eval("CategoryID")%>'></asp:Label>
+                                        <li><a href="#"><span><%#Eval("CategoryName") %></span></a>
+
+
+                                            <ul>
+                                                <asp:Repeater ID="rptDanhMuc2" runat="server">
+                                                    <ItemTemplate>
+                                                        <li><a href="Products.aspx?id=<%#Eval("SmallProductCategoryID")%>"><span>
+                                                            <%#Eval("SmallProductCategoryName")%></span></a></li>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </ul>
+
+
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+
+                            </ul>
+                        </div>
+                        <!--End #mainNav-->
+                        <%--<ul class="danhmuc">
+                        <asp:Repeater ID="rptDanhMuc" runat="server">
+                            <ItemTemplate>
+                                <li><a href="Products.aspx?id=<%#Eval("SmallProductCategoryID")%>"><span>
+                                    <%#Eval("SmallProductCategoryName")%></span></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>--%>
+                    </div>
+                </div>
+                <div class="news" style="margin-top: 3px">
+                    <div class="LC-box">
+                        <div class="LR-box-L">
+                        </div>
+                        <div class="LR-box-C">
+                            <span>Tin tức</span>
+                        </div>
+                        <div class="LR-box-R">
+                        </div>
+                    </div>
+                    <div class="event">
+                        <ul class="News">
+                            <asp:Repeater ID="rptNews" runat="server">
+                                <ItemTemplate>
+                                    <li><a href="NewDetail.aspx?idNew=<%#Eval("NewID")%>"><span>
+                                        <%#Eval("Title")%></span></a></li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </ul>
+                    </div>
+                </div>
+                <div class="HoTro" style="margin-top: 3px">
+                    <div class="LC-box">
+                        <div class="LR-box-L">
+                        </div>
+                        <div class="LR-box-C">
+                            <span>Hỗ trợ khách hàng</span>
+                        </div>
+                        <div class="LR-box-R">
+                        </div>
+                    </div>
+                    <%--  <div class="event">
+                    <div style="padding-left: 20px; margin-top: 8px">
+                      
+                        <div>
+                            <a href="https://www.facebook.com/ttn10596" style="text-decoration: none;">Fb: TuToan Nguyen</a> </div>
+                        <div>
+                            Hotline: 0988928282</div>
+                        <a href="tutoannguyen105@gmail.com">
+                            <img alt="Yahoo!Status (Online/Offline)" src="http://opi.yahoo.com/online?u=bientho88&m=g&t=2"
+                                border="0" /></a>
+                    </div>
+                    <div style="padding-left: 20px; margin-top: 8px">
+                        <a href="ymsgr:sendIM?bientho88&m=Nhập vào gửi tới Thanh Tùng">
+                            <img alt="Yahoo!Status (Online/Offline)" src="http://opi.yahoo.com/online?u=bientho88&m=g&t=2"
+                                border="0" /></a>
+                        <div>
+                            Chức vụ: Kinh doanh 1</div>
+                        <div>
+                            Số ĐT: 0988928282</div>
+                    </div>
+                    <div style="padding-left: 20px; margin-top: 8px">
+                        <a href="ymsgr:sendIM?bientho88&m=Nhập vào gửi tới Bá Tùng">
+                            <img alt="Yahoo!Status (Online/Offline)" src="http://opi.yahoo.com/online?u=bientho88&m=g&t=2"
+                                border="0" /></a>
+                        <div>
+                            Chức vụ: Kinh doanh 1</div>
+                        <div>
+                            Số ĐT: 0988928282</div>
+                    </div>
+                </div>--%>
+                    <%--///////////////////////////////////////////////////////--%>
+
+                    <div class="event">
+                        <div style="padding-left: 20px; margin-top: 8px">
+
+                            <div>
+                                <img src="Images/Design/FaceBook-icon.png" />
+                                <a href="https://www.facebook.com/ttn10596" style="text-decoration: none;">Fb: TuToan Nguyen</a>
+                            </div>
+                            <div>
+                                <img src="Images/Design/phone-icon.png" />
+                                Hotline: 01214228322
+                            </div>
+                            <div>
+
+                                <a href="mailto:tutoannguyen105@gmail.com" style="text-decoration: none;">Email:tutoannguyen105@gmail.com</a>
+                            </div>
+
+                        </div>
+                        <div style="padding-left: 20px; margin-top: 8px">
+
+                            <div>
+                                <img src="Images/Design/FaceBook-icon.png" />
+                                <a href="https://www.facebook.com/profile.php?id=100005245781697" style="text-decoration: none;">Fb: Nguyễn Thanh Tùng</a>
+                            </div>
+                            <div>
+                                <img src="Images/Design/phone-icon.png" />
+                                Hotline: 0939736496
+                            </div>
+                            <div>
+
+                                <a href="mailto:pikapikachu2151@gmail.com" style="text-decoration: none;">Email: pikapikachu2151@gmail.com</a>
+                            </div>
+
+                        </div>
+                         <div style="padding-left: 20px; margin-top: 8px">
+
+                            <div>
+                                <img src="Images/Design/FaceBook-icon.png" />
+                                <a href="https://www.facebook.com/profile.php?id=100005245781697" style="text-decoration: none;">Fb: Lê Minh Nhật</a>
+                            </div>
+                            <div>
+                                <img src="Images/Design/phone-icon.png" />
+                                Hotline: 0931234567
+                            </div>
+                            <div>
+
+                                <a href="mailto:onggiaxteen@gmail.com" style="text-decoration: none;">Email: onggiaxteen@gmail.com</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <%--//////////////////////////////////////////////--%>
+                </div>
+                <div class="truycap" style="margin-top: 3px">
+                    <div class="LC-box">
+                        <div class="LR-box-L">
+                        </div>
+                        <div class="LR-box-C">
+                            <span>Thống kê truy cập</span>
+                        </div>
+                        <div class="LR-box-R">
+                        </div>
+                    </div>
+                    <div class="event">
+                        <p>
+                            &nbsp;&nbsp;&nbsp;
+                        Số lượt đã truy cập :
+                        <asp:Label ID="lbDa" runat="server"></asp:Label>
+                        </p>
+                        <p>
+                            &nbsp;&nbsp;&nbsp;
+                        Số lượt đang truy cập :
+                        <asp:Label ID="lbDang" runat="server"></asp:Label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="rightContent">
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div class="auto-style6">
+            <h4 class="auto-style7">Giấy phép hoạt động Trường Đại Học SPKT Vĩnh Long Internet số 2018/GP -TP VINH LONG,<br />
+                ngày 10-06-2018.&nbsp; Điện thoại:01214228322. Fax: 0321-9829222<br />
+                &nbsp;Email: info@vatlieuxaydung.com.vn. Website: http://www.vatlieuxaydung.com.vn
+            </h4>
+        </div>
+    </form>
+</body>
+    <script  type="text/javascript" src="https://uhchat.net/code.php?f=75d57c"></script>
+<%--<script type="text/javascript" src="https://uhchat.net/code.php?f=5c5182"></script>--%>
+</html>
